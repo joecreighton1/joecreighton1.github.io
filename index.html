@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Add a default marker to a web map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoiam9lY3I4b245OSIsImEiOiJjbHVkMmsyZmcxYnRzMm1sZHdpenY0ZGQxIn0.njPsYmA5vDeSuJeKN-xM-A';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [-104.52806, 33.38722],
+            zoom: 6
+        });
+        // Dallas PopUp
+        const popup1 = new mapboxgl.Popup({ offset: 25 }).setText('Sunny Wash & Dry\\n2311 Lakeland Dr Dallas, TX 75228\\nPhone:19512372894');
+        const popup2 = new mapboxgl.Popup({ offset: 25 }).setText('Lemon Fresh Wash & Dry\\n6648 Lemmon Ave Dallas, TX 75209\\nPhone:12149569101');
+        const popup3 = new mapboxgl.Popup({ offset: 25 }).setText('J R Coin Laundry\\n4234 Maple Ave Dallas, TX 75219\\nPhone:12144439008');
+        const popup4 = new mapboxgl.Popup({ offset: 25 }).setText('Pro Wash & Dry\\n9115 Forest Ln Dallas, TX 75243\\nPhone:NA');
+        const popup5 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n3220 N Fitzhugh Ave Dallas, TX 75204\\nPhone:12145223344');
+        const popup6 = new mapboxgl.Popup({ offset: 25 }).setText('Maple Super Wash and Dry\\n4630 Maple Ave Dallas, TX 75219\\nPhone:NA');
+        const popup7 = new mapboxgl.Popup({ offset: 25 }).setText('Revolution Laundromat - Richardson\\n525 W Arapaho Rd Ste 26 Richardson, TX 75080\\nPhone:14693726155');
+        const popup8 = new mapboxgl.Popup({ offset: 25 }).setText('Spin Cycle Washateria\\n6300 Skillman St Ste 160 Dallas, TX 75231\\nPhone:NA');
+        const popup9 = new mapboxgl.Popup({ offset: 25 }).setText('Magic Coin Laundry - Fair Oaks\\n7020 Fair Oaks Ave Ste 100 Dallas, TX 75231\\nPhone:12146283219');
+        const popup10 = new mapboxgl.Popup({ offset: 25 }).setText('Lone Star Wash n Fold\\n6721 Mid Cities Blvd North Richland Hills, TX 76182\\nPhone:18174793221');
+        const popup11 = new mapboxgl.Popup({ offset: 25 }).setText('Spring Valley Magic Coin Laundry and Dry Cleaners\\n7879 Spring Valley Rd Ste 147 Dallas, TX 75254\\nPhone:19725037310');
+        const popup12 = new mapboxgl.Popup({ offset: 25 }).setText('S&J Coin Laundry\\n5542 Maple Ave Dallas, TX 75235\\nPhone:12149050414');
+        const popup13 = new mapboxgl.Popup({ offset: 25 }).setText('Feather Laundry\\n4819 Ross Ave Dallas, TX 75204\\nPhone:12147272339');
+        const popup14 = new mapboxgl.Popup({ offset: 25 }).setText('Wash N Dry\\n4343 W Camp Wisdom Rd Dallas, TX 75237\\nPhone:19727805670');
+        const popup15 = new mapboxgl.Popup({ offset: 25 }).setText('Washouse Laundry\\n4509 Greenville Ave Dallas, TX 75206\\nPhone:12142204563');
+        const popup17 = new mapboxgl.Popup({ offset: 25 }).setText('Royal Coin Laundry\\n10909 Webb Chapel Rd Dallas, TX 75229\\nPhone:12146540730');
+        const popup19 = new mapboxgl.Popup({ offset: 25 }).setText('Speed Queen Laundry\\n2740 Valwood Pkwy Ste 131 Farmers Branch, TX 75234\\nPhone:19729991889');
+        const popup20 = new mapboxgl.Popup({ offset: 25 }).setText('WaveMAX Laundry - Plano\\n3611 14th St Ste 170 Plano, TX 75074\\nPhone:14692983230');
+        const popup21 = new mapboxgl.Popup({ offset: 25 }).setText('Xpress Wash N Dry\\n4916 Columbia Ave Dallas, TX 75214\\nPhone:14698284440');
+        const popup22 = new mapboxgl.Popup({ offset: 25 }).setText('WaveMax Carrollton\\n2760 E Trinity Mills Rd Ste 112 Carrollton, TX 75006\\nPhone:12147316575');
+        const popup23 = new mapboxgl.Popup({ offset: 25 }).setText('Seashore Washateria\\n1651 New York Ave Arlington, TX 76010\\nPhone:16823235916');
+        const popup24 = new mapboxgl.Popup({ offset: 25 }).setText('Super Kleen Coin Laundry\\n707 N Hwy 78 Wylie, TX 75098\\nPhone:19724290756');
+        const popup25 = new mapboxgl.Popup({ offset: 25 }).setText('Tornado Express Laundry Plano\\n3182 W/ Parker Rd Plano, TX 75075\\nPhone:19729420505');
+        const popup26 = new mapboxgl.Popup({ offset: 25 }).setText('The Laundry Room Laundromat\\n747 S MacArthur Blvd Coppell, TX 75019\\nPhone:19723045550');
+        const popup27 = new mapboxgl.Popup({ offset: 25 }).setText('Lone Star Wash & Dry\\n13970 Josey Ln Farmers Branch, TX 75234\\nPhone:19725288161');
+        const popup28 = new mapboxgl.Popup({ offset: 25 }).setText('Rizos Wash Laundromat & Carwash\\n2828 W Northwest Hwy Ste D Dallas, TX 75220\\nPhone:12143664660');
+        const popup29 = new mapboxgl.Popup({ offset: 25 }).setText('XL Wash & Dry\\n9203 Skillman St Ste 100 Dallas, TX 75243\\nPhone:12143820233');
+        const popup30 = new mapboxgl.Popup({ offset: 25 }).setText('Lone Star Wash & Dry\\n1158 W Main St Lewisville, TX 75067\\nPhone:19725288161');
+        const popup31 = new mapboxgl.Popup({ offset: 25 }).setText('Amigo Laundry\\n2488 K Ave Plano, TX 75074\\nPhone:12142144352');
+        const popup32 = new mapboxgl.Popup({ offset: 25 }).setText('Laundromat Lavanderia Fox\\n10120 Harry Hines Blvd Dallas, TX 75220\\nPhone:NA');
+        const popup34 = new mapboxgl.Popup({ offset: 25 }).setText('Coin Laundry\\n705 N McDonald St McKinney, TX 75069\\nPhone:12145928332');
+        const popup35 = new mapboxgl.Popup({ offset: 25 }).setText('Kwik Wash Laundry\\n816 N Fitzhugh Ave Dallas, TX 75246\\nPhone:12148211731');
+        const popup36 = new mapboxgl.Popup({ offset: 25 }).setText('Galloway Coin Laundry-LavanderÃ¬a\\n2929 N Galloway Ave Ste 112 Mesquite, TX 75150\\nPhone:19724417000');
+        const popup37 = new mapboxgl.Popup({ offset: 25 }).setText('WaveMAX Laundry\\n6805 Main St Ste 400 The Colony, TX 75056\\nPhone:14692008400');
+        const popup38 = new mapboxgl.Popup({ offset: 25 }).setText('Magic Coin Laundry - Goldmark\\n8702 Spring Valley Rd Dallas, TX 75240\\nPhone:12148848792');
+        const popup39 = new mapboxgl.Popup({ offset: 25 }).setText('Richardson Wash & Dry Coin Laundry\\n1029 Frances Way Richardson, TX 75081\\nPhone:19722345711');
+        const popup40 = new mapboxgl.Popup({ offset: 25 }).setText('Robertoâ€™s Lavanderia\\n707 Sunset Ave Dallas, TX 75208\\nPhone:NA');
+        const popup43 = new mapboxgl.Popup({ offset: 25 }).setText('O Laundry\\n9751 Walnut St Ste 130 Dallas, TX 75243\\nPhone:18555059274');
+        const popup44 = new mapboxgl.Popup({ offset: 25 }).setText('The Laundry Room\\n2100 Harwood Rd Bedford, TX 76021\\nPhone:18176922862');
+        const popup45 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry Limo\\nDallas, TX 75247\\nPhone:12144143034');
+        const popup48 = new mapboxgl.Popup({ offset: 25 }).setText('Amigo Laundry\\n3349 Country Club Dr W Irving, TX 75038\\nPhone:19722553201');
+        const popup49 = new mapboxgl.Popup({ offset: 25 }).setText('Joy Wash N Dry\\n2605 Fort Worth Ave Ste 500 Dallas, TX 75211\\nPhone:12143370095');
+        const popup50 = new mapboxgl.Popup({ offset: 25 }).setText('Wash And Dry Lavanderia\\n1455 E Buckingham Rd Ste 300 Richardson, TX 75081\\nPhone:19722317877');
+        const popup51 = new mapboxgl.Popup({ offset: 25 }).setText('Tornado Express Laundry - Irving\\n3325 N Story Rd Irving, TX 75062\\nPhone:14695652323');
+        const popup52 = new mapboxgl.Popup({ offset: 25 }).setText('City Washeteria\\n220 Barton St Grapevine, TX 76051\\nPhone:NA');
+        const popup53 = new mapboxgl.Popup({ offset: 25 }).setText('US Cleaners\\n2127 Greenville Ave Dallas, TX 75206\\nPhone:12148218780');
+        const popup54 = new mapboxgl.Popup({ offset: 25 }).setText('Wash-It Kwik Laundry Supercenter\\n533 E Belt Line Rd Cedar Hill, TX 75104\\nPhone:19722919800');
+        const popup55 = new mapboxgl.Popup({ offset: 25 }).setText('360 Wash-n-Dry\\n2800 Forestwood Dr Arlington, TX 76006\\nPhone:18176172273');
+        const popup56 = new mapboxgl.Popup({ offset: 25 }).setText('Wash Zone\\n1717 E Eldorado Pkwy Little Elm, TX 75068\\nPhone:14699807743');
+        const popup57 = new mapboxgl.Popup({ offset: 25 }).setText('Tornado Express Laundry- Dallas\\n3330 W Kiest Blvd Dallas, TX 75233\\nPhone:14696770227');
+        const popup58 = new mapboxgl.Popup({ offset: 25 }).setText('Bedford Wash & Dry\\n1548 Bedford Rd Bedford, TX 76021\\nPhone:18175718083');
+        const popup59 = new mapboxgl.Popup({ offset: 25 }).setText('O Laundry\\n1103 California Ln Ste B Arlington, TX 76015\\nPhone:18555059274');
+        const popup61 = new mapboxgl.Popup({ offset: 25 }).setText('Speed Wash & Dry\\n4828 Columbia Ave Ste 400 Dallas, TX 75226\\nPhone:12148266465');
+        const popup62 = new mapboxgl.Popup({ offset: 25 }).setText('Joy Wash & Dry\\n1060 N Main St Euless, TX 76039\\nPhone:12147902229');
+        const popup64 = new mapboxgl.Popup({ offset: 25 }).setText('Jess\'s Laundry\\n314 S Shady Shores Rd Ste 104 Lake Dallas, TX 75065\\nPhone:19406002737');
+        const popup65 = new mapboxgl.Popup({ offset: 25 }).setText('Lavanderia Laundry Mat\\n2100 E Abram St Arlington, TX 76010\\nPhone:NA');
+        const popup66 = new mapboxgl.Popup({ offset: 25 }).setText('Sunshine Laundry & Dry Cleaners\\n4114 Maple Ave Dallas, TX 75219\\nPhone:12145219921');
+        const popup68 = new mapboxgl.Popup({ offset: 25 }).setText('Coin Laundry\\n1201 S Josey Ln Ste 651 Carrollton, TX 75006\\nPhone:NA');
+        const popup69 = new mapboxgl.Popup({ offset: 25 }).setText('Green Cleaners\\n4123 Cedar Springs Rd Ste 106 Dallas, TX 75219\\nPhone:12142382644');
+        const popup70 = new mapboxgl.Popup({ offset: 25 }).setText('Dennis Coin Laundrymat\\n10828 Dennis Rd Dallas, TX 75229\\nPhone:14696875626');
+        const popup71 = new mapboxgl.Popup({ offset: 25 }).setText('EZ Wash N Dry\\n2345 S Cooper St Arlington, TX 76015\\nPhone:18176172112');
+        const popup72 = new mapboxgl.Popup({ offset: 25 }).setText('Royal Coin Laundry\\n9901 Royal Ln Dallas, TX 75231\\nPhone:12145565773');
+        const popup73 = new mapboxgl.Popup({ offset: 25 }).setText('MySuperClean Wash\\n831 N Duncanville Rd Duncanville, TX 75116\\nPhone:12142849513');
+        const popup74 = new mapboxgl.Popup({ offset: 25 }).setText('Jiffy wash\\n203 Martha St Euless, TX 76040\\nPhone:16822525801');
+        const popup75 = new mapboxgl.Popup({ offset: 25 }).setText('JA Wash n Dry\\n540 S Carrier Pkwy Ste 600 Grand Prairie, TX 75051\\nPhone:14692512202');
+        const popup76 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry Basket\\n417 W Euless Blvd Euless, TX 76040\\nPhone:18175454449');
+        const popup77 = new mapboxgl.Popup({ offset: 25 }).setText('Wash\'n Dry\\n3065 N Josey Ln Ste 32 Carrollton, TX 75007\\nPhone:19729390698');
+        const popup78 = new mapboxgl.Popup({ offset: 25 }).setText('Bibbentuckers - Park Cities\\n6817 Hillcrest Ave Dallas, TX 75205\\nPhone:12143619703');
+        const popup79 = new mapboxgl.Popup({ offset: 25 }).setText('Speed King Wash & Dry\\n5528 Alpha Rd Dallas, TX 75240\\nPhone:19722331714');
+        const popup80 = new mapboxgl.Popup({ offset: 25 }).setText('Breeze Laundry\\n3501 Gus Thomasson Rd Ste 47 Mesquite, TX 75150\\nPhone:NA');
+        const popup81 = new mapboxgl.Popup({ offset: 25 }).setText('Abe\'s Coin Laundry\\n2246 N Collins St Arlington, TX 76011\\nPhone:18173031005');
+        const popup83 = new mapboxgl.Popup({ offset: 25 }).setText('Blue Wave Laundromat\\n117 Kenway St Rockwall, TX 75087\\nPhone:19727222391');
+        const popup84 = new mapboxgl.Popup({ offset: 25 }).setText('US Cleaners\\n5706 E Mockingbird Ln Ste 101 Dallas, TX 75206\\nPhone:12148247997');
+        const popup86 = new mapboxgl.Popup({ offset: 25 }).setText('Coin Laundry Lavanderia\\n12879 Josey Ln Ste 170 Farmers Branch, TX 75234\\nPhone:NA');
+        const popup87 = new mapboxgl.Popup({ offset: 25 }).setText('Tiny Bubbles Coin Laundry\\n2460 E Arkansas Ln Arlington, TX 76014\\nPhone:18174628127');
+        const popup88 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry On Demand\\n539 W Commerce Dallas, TX 75208\\nPhone:14697088836');
+        const popup90 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry Boss - Midlothian\\n410 S 14th St Midlothian, TX 76065\\nPhone:16824650597');
+        const popup91 = new mapboxgl.Popup({ offset: 25 }).setText('Big Coin Laundry\\n9660 Audelia Rd Dallas, TX 75238\\nPhone:12143486306');
+        const popup92 = new mapboxgl.Popup({ offset: 25 }).setText('EZ Wash Laundry\\n915 W Parker Rd Plano, TX 75023\\nPhone:19723981337');
+        const popup93 = new mapboxgl.Popup({ offset: 25 }).setText('MVP Wash-n-Dry\\n6958 W Main St Frisco, TX 75033\\nPhone:14694225390');
+        const popup94 = new mapboxgl.Popup({ offset: 25 }).setText('Press Cleaners\\nDallas, TX 75231\\nPhone:12142955824');
+        const popup95 = new mapboxgl.Popup({ offset: 25 }).setText('Super Wash & Dry\\n608 E Pioneer Pkwy Ste 103 Grand Prairie, TX 75051\\nPhone:15126183775');
+        const popup96 = new mapboxgl.Popup({ offset: 25 }).setText('Brantley Cleaners\\n5000 Belt Line Rd Ste 950 Dallas, TX 75254\\nPhone:19726612267');
+        const popup97 = new mapboxgl.Popup({ offset: 25 }).setText('Speed Queen Coin Laundry\\n1288 W Main St Ste 119 Lewisville, TX 75067\\nPhone:19722218082');
+        const popup98 = new mapboxgl.Popup({ offset: 25 }).setText('Peavy Wash and Dry\\n1169 Peavy Rd Dallas, TX 75218\\nPhone:NA');
+        const popup99 = new mapboxgl.Popup({ offset: 25 }).setText('Super Wash Center\\n844 S Carrier Pkwy Grand Prairie, TX 75051\\nPhone:14695632674');
+        const popup100 = new mapboxgl.Popup({ offset: 25 }).setText('Brownâ€™s Laundromat\\n204 N Greenville Ave Ste 150 Allen, TX 75002\\nPhone:NA');
+        const popup101 = new mapboxgl.Popup({ offset: 25 }).setText('Rosemeade Laundry\\n1000 W Rosemeade Pkwy Ste 124 Carrollton, TX 75007\\nPhone:14694315949');
+        const popup102 = new mapboxgl.Popup({ offset: 25 }).setText('Speed Queen Wash & Dry\\n4824 Gaston Ave Dallas, TX 75246\\nPhone:12148878508');
+        const popup103 = new mapboxgl.Popup({ offset: 25 }).setText('Super Mobile Laundry\\n100 W Ave D Garland, TX 75040\\nPhone:12145603055');
+        const popup104 = new mapboxgl.Popup({ offset: 25 }).setText('PTC Coin Laundry\\n3420 K Ave Ste 198 Plano, TX 75074\\nPhone:19726339875');
+        const popup106 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry Wash\\n5555 Preston Oaks Rd Dallas, TX 75254\\nPhone:NA');
+        const popup107 = new mapboxgl.Popup({ offset: 25 }).setText('XPS Wash N Dry\\n3713 W Walnut St Garland, TX 75042\\nPhone:14694430767');
+        const popup108 = new mapboxgl.Popup({ offset: 25 }).setText('Wash M Dry\\n8440 Lake June Rd Dallas, TX 75217\\nPhone:12143093650');
+        const popup110 = new mapboxgl.Popup({ offset: 25 }).setText('Laundr-it.com\\nAllen, TX 75013\\nPhone:12146628610');
+        const popup111 = new mapboxgl.Popup({ offset: 25 }).setText('City Coin Laundry\\n1305 S State Hwy 121 Lewisville, TX 75067\\nPhone:19725375677');
+        const popup112 = new mapboxgl.Popup({ offset: 25 }).setText('Howell St Cleaners\\n2817 Howell St Dallas, TX 75204\\nPhone:12149992893');
+        const popup114 = new mapboxgl.Popup({ offset: 25 }).setText('Less Stress Mobile Laundry - Dallas Pick-up and Delivery.\\nDallas, TX 75201\\nPhone:12148140173');
+        const popup115 = new mapboxgl.Popup({ offset: 25 }).setText('H O Coin Laundry\\n1011 Gibbins Rd Arlington, TX 76011\\nPhone:18172741117');
+        const popup117 = new mapboxgl.Popup({ offset: 25 }).setText('Bam Wash and Dry Laudromat\\n2224 W Buckingham Rd Ste 101 Garland, TX 75042\\nPhone:12145058658');
+        const popup118 = new mapboxgl.Popup({ offset: 25 }).setText('Red\'s Laundry\\n1000 E Eldorado Ste 180 Little Elm, TX 75068\\nPhone:14693050984');
+        const popup119 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean City & Coin Laundry\\n5115 Little Rd Arlington, TX 76017\\nPhone:18175726484');
+        const popup120 = new mapboxgl.Popup({ offset: 25 }).setText('Forney Coin Laundry\\n520 Pinson Rd Forney, TX 75126\\nPhone:NA');
+        const popup121 = new mapboxgl.Popup({ offset: 25 }).setText('Brantley Cleaners\\n6801 Hillcrest Ave Dallas, TX 75205\\nPhone:12143739440');
+        const popup123 = new mapboxgl.Popup({ offset: 25 }).setText('Spincycle Coin Laundry\\n102 W Camp Wisdom Rd Duncanville, TX 75116\\nPhone:19727091585');
+        const popup124 = new mapboxgl.Popup({ offset: 25 }).setText('Princeton Laundry\\n691 E Princeton Dr Ste 103 Princeton, TX 75407\\nPhone:12142144027');
+        const popup126 = new mapboxgl.Popup({ offset: 25 }).setText('Coin Op Laundry\\n1120 W Rochelle Irving, TX 75062\\nPhone:NA');
+        const popup127 = new mapboxgl.Popup({ offset: 25 }).setText('Sudz Wash N Go Laundromat\\n1000 E Eldorado Pkwy Ste 180 Little Elm, TX 75068\\nPhone:14693624340');
+        const popup129 = new mapboxgl.Popup({ offset: 25 }).setText('Discount Cleaners\\n1111 W Airport Fwy Ste 113 Irving, TX 75062\\nPhone:19722585131');
+        const popup133 = new mapboxgl.Popup({ offset: 25 }).setText('Las Colinas Market Square Cleaners\\n5431 N Macarthur Blvd Irving, TX 75038\\nPhone:19725800565');
+        const popup134 = new mapboxgl.Popup({ offset: 25 }).setText('Speed Queen Laundry & Dry Clng\\n1492 W Buckingham Rd Garland, TX 75042\\nPhone:19724944820');
+        const popup135 = new mapboxgl.Popup({ offset: 25 }).setText('WaveMax Laundry\\n2823 W Park Row Dr Arlington, TX 76013\\nPhone:16823234466');
+        const popup137 = new mapboxgl.Popup({ offset: 25 }).setText('Lavanderya Laundry\\n380 E State Hwy Lewisville, TX 75067\\nPhone:12148709946');
+        const popup138 = new mapboxgl.Popup({ offset: 25 }).setText('Comet One Hour Cleaners\\n5315 Greenville Ave Ste 110 Dallas, TX 75206\\nPhone:12143696030');
+        const popup139 = new mapboxgl.Popup({ offset: 25 }).setText('Swiss the Greener Dry Cleaners\\n3030 Mockingbird Ln Dallas, TX 75205\\nPhone:12149870665');
+        const popup140 = new mapboxgl.Popup({ offset: 25 }).setText('Wash-N-Dry\\n692 W Pioneer Pkwy Ste 140 Grand Prairie, TX 75051\\nPhone:12149066397');
+        const popup141 = new mapboxgl.Popup({ offset: 25 }).setText('Buckner Wash N Dry\\n3312 N Buckner Blvd Ste 212 Dallas, TX 75228\\nPhone:19722209716');
+        const popup142 = new mapboxgl.Popup({ offset: 25 }).setText('Kwik Wash\\n915 W Parker Rd Plano, TX 75023\\nPhone:19725199731');
+        const popup146 = new mapboxgl.Popup({ offset: 25 }).setText('Salt & Light Laundry Services\\nCelina, TX 75009\\nPhone:19728631632');
+        const popup147 = new mapboxgl.Popup({ offset: 25 }).setText('O Laundry - Arlington\\n1001 W Sanford St Arlington, TX 76012\\nPhone:18555059274');
+        const popup148 = new mapboxgl.Popup({ offset: 25 }).setText('Barton-Howell Cleaning & Laundry\\n101 S Central Expy Richardson, TX 75080\\nPhone:19722352616');
+        const popup149 = new mapboxgl.Popup({ offset: 25 }).setText('Coin Laundry Big\\n421 N Garland Ave Garland, TX 75040\\nPhone:19724943516');
+        const popup150 = new mapboxgl.Popup({ offset: 25 }).setText('Star Cleaners\\n6916 Independence Pkwy Plano, TX 75023\\nPhone:19724913549');
+        const popup151 = new mapboxgl.Popup({ offset: 25 }).setText('StarBrite II Coin Laundry\\n290 E Corporate Dr Ste D Lewisville, TX 75067\\nPhone:NA');
+        const popup153 = new mapboxgl.Popup({ offset: 25 }).setText('Empire Cleaners\\n5622 E Mockingbird Ln Ste 100 Dallas, TX 75206\\nPhone:12148243176');
+        const popup154 = new mapboxgl.Popup({ offset: 25 }).setText('GK\'s Cleaners & Laundry\\n6101 Long Prairie Rd Ste 756 Argyle, TX 76226\\nPhone:19726914379');
+        const popup155 = new mapboxgl.Popup({ offset: 25 }).setText('Tiny Bubbles Coin Laundry\\n513 W Jefferson St Ste 100 Grand Prairie, TX 75051\\nPhone:19729542711');
+        const popup156 = new mapboxgl.Popup({ offset: 25 }).setText('Super Laundry City\\n1120 E Parker Rd Plano, TX 75074\\nPhone:14694677176');
+        const popup157 = new mapboxgl.Popup({ offset: 25 }).setText('Tornado Express Laundry- Richland Hills\\n7212 Boulevard 26 Richland Hills, TX 76180\\nPhone:18172412929');
+        const popup159 = new mapboxgl.Popup({ offset: 25 }).setText('Fresh Start Laundry\\n1863 W Division St Ste D Arlington, TX 76012\\nPhone:18172745500');
+        const popup160 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry City\\n1903 Crestridge Dr Dallas, TX 75228\\nPhone:NA');
+        const popup161 = new mapboxgl.Popup({ offset: 25 }).setText('US Cleaners\\n4724 Greenville Ave Dallas, TX 75206\\nPhone:12146918523');
+        const popup162 = new mapboxgl.Popup({ offset: 25 }).setText('Appliance Parts Depot\\n4754 Almond Ave Dallas, TX 75247\\nPhone:12146314343');
+        const popup163 = new mapboxgl.Popup({ offset: 25 }).setText('Coin Laundry Mart\\n1326 W Main St Lewisville, TX 75067\\nPhone:19724363571');
+        const popup164 = new mapboxgl.Popup({ offset: 25 }).setText('Ovilla Rd Dry Cleaning & Laundry\\n132 E Ovilla Rd Ste 7 Red Oak, TX 75154\\nPhone:19726178422');
+        const popup166 = new mapboxgl.Popup({ offset: 25 }).setText('DD Wash N Dry\\n18110 Midway Rd Dallas, TX 75287\\nPhone:14694309229');
+        const popup167 = new mapboxgl.Popup({ offset: 25 }).setText('La Bonita Wash & Dry\\n1818 W Pioneer Pkwy ste 500 Arlington, TX 76013\\nPhone:NA');
+        const popup168 = new mapboxgl.Popup({ offset: 25 }).setText('Arlington Wash & Dry\\n1601 S Cooper St Arlington, TX 76010\\nPhone:18174625255');
+        const popup169 = new mapboxgl.Popup({ offset: 25 }).setText('Jayhill Washer & Dryer Repair\\nDallas, TX 75206\\nPhone:14692160920');
+        const popup170 = new mapboxgl.Popup({ offset: 25 }).setText('Lakeview Coin Laundry\\n6575 Duckcreek Dr Garland, TX 75043\\nPhone:NA');
+        const popup171 = new mapboxgl.Popup({ offset: 25 }).setText('Bibbentuckers - Uptown / Midtown\\n3400 Carlisle St Dallas, TX 75204\\nPhone:12142195400');
+        const popup172 = new mapboxgl.Popup({ offset: 25 }).setText('Big G Bicycle Repair Service\\n3349 Country Club Dr W Irving, TX 75038\\nPhone:14695162365');
+        const popup173 = new mapboxgl.Popup({ offset: 25 }).setText('H&L Superwash\\n911 W Pioneer Pkwy Arlington, TX 76013\\nPhone:NA');
+        const popup174 = new mapboxgl.Popup({ offset: 25 }).setText('Arkansas Square Laundromat\\n3901 W Arkansas Ln Ste 102 Arlington, TX 76016\\nPhone:NA');
+        const popup175 = new mapboxgl.Popup({ offset: 25 }).setText('Power Cleaners\\n105 S Murphy Rd Murphy, TX 75094\\nPhone:19725781563');
+        const popup177 = new mapboxgl.Popup({ offset: 25 }).setText('Bibbentuckers - Plano / Frisco\\n1913 Preston Rd Ste 150 Plano, TX 75093\\nPhone:19727331919');
+        const popup179 = new mapboxgl.Popup({ offset: 25 }).setText('HPS Appliance Repair\\n16135 Preston Rd Ste 128 Dallas, TX 75248\\nPhone:18887666151');
+        const popup182 = new mapboxgl.Popup({ offset: 25 }).setText('Big Coin Laundry\\n1418 Castle Dr Garland, TX 75040\\nPhone:19724875743');
+        const popup184 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Cleaning Express\\n601 W Parker Rd Ste 112 Plano, TX 75023\\nPhone:19725788354');
+        const popup186 = new mapboxgl.Popup({ offset: 25 }).setText('Spincycle Coin Laundry\\n10325 Lake June Rd Dallas, TX 75217\\nPhone:19722851989');
+        const popup187 = new mapboxgl.Popup({ offset: 25 }).setText('Comet Cleaners\\n3806 E Broad St Mansfield, TX 76063\\nPhone:18174530868');
+        const popup188 = new mapboxgl.Popup({ offset: 25 }).setText('Q Cleaners\\n4610 W Eldorado Pkwy McKinney, TX 75070\\nPhone:12145447747');
+        const popup190 = new mapboxgl.Popup({ offset: 25 }).setText('Bibbentuckers - Preston Hollow\\n11741 Preston Rd Dallas, TX 75230\\nPhone:12147391100');
+        const popup191 = new mapboxgl.Popup({ offset: 25 }).setText('US Cleaners\\n10455 N Central Expy Ste 114 Meadow Central Dallas, TX 75231\\nPhone:12146919428');
+        const popup192 = new mapboxgl.Popup({ offset: 25 }).setText('Canal Cleaners\\n220 Las Colinas Blvd E Irving, TX 75039\\nPhone:19728694424');
+        const popup193 = new mapboxgl.Popup({ offset: 25 }).setText('SAFA Cell Phone & Computer Repair\\n10909 Webb Chapel Rd Ste 148 Dallas, TX 75229\\nPhone:14695351304');
+        const popup194 = new mapboxgl.Popup({ offset: 25 }).setText('Charlie\'s Dry Cleaning and Laundry\\n1314 W McDermott Dr Ste 190 Allen, TX 75013\\nPhone:19723591883');
+        const popup195 = new mapboxgl.Popup({ offset: 25 }).setText('Manny Milano Valet Laundry\\nDenton, TX 76208\\nPhone:16822566100');
+        const popup197 = new mapboxgl.Popup({ offset: 25 }).setText('Pioneer Cleaners\\n4100 Live Oak St Dallas, TX 75204\\nPhone:12148274555');
+        const popup198 = new mapboxgl.Popup({ offset: 25 }).setText('MacArthur Cleaners\\n8600 N MacArthur Blvd Irving, TX 75063\\nPhone:19724018212');
+        const popup199 = new mapboxgl.Popup({ offset: 25 }).setText('Hannah\'s Laundromat\\n3901 W Arkansas Ln Ste 102 Arlington, TX 76016\\nPhone:18172741012');
+        const popup200 = new mapboxgl.Popup({ offset: 25 }).setText('Washeteria\\n3030 N Josey Ln Carrollton, TX 75007\\nPhone:NA');
+        const popup201 = new mapboxgl.Popup({ offset: 25 }).setText('Snap Appliance Repair\\n1625 Williamsburg Dr Plano, TX 75074\\nPhone:19727991151');
+        const popup202 = new mapboxgl.Popup({ offset: 25 }).setText('US Cleaners\\n1811 Skillman St Dallas, TX 75206\\nPhone:12148212294');
+        const popup203 = new mapboxgl.Popup({ offset: 25 }).setText('J\'s Tailor & Cleaners\\n625 High Market St Ste 150 Dallas, TX 75219\\nPhone:12147300595');
+        const popup204 = new mapboxgl.Popup({ offset: 25 }).setText('Uptown Appliance Repair\\n6621 Snider Plz Ste 275 Dallas, TX 75205\\nPhone:12147618300');
+        const popup205 = new mapboxgl.Popup({ offset: 25 }).setText('Pepper Square Cleaners\\n14902 Preston Rd Ste 910 Dallas, TX 75254\\nPhone:19723864663');
+        const popup208 = new mapboxgl.Popup({ offset: 25 }).setText('Bibbentuckers - Southlake\\n2301 W Southlake Blvd Ste 100 Southlake, TX 76092\\nPhone:18174319990');
+        const popup209 = new mapboxgl.Popup({ offset: 25 }).setText('Smile Wash N Dry\\n2351 E Arkansas Ln Ste 300 Arlington, TX 76010\\nPhone:18175836850');
+        const popup210 = new mapboxgl.Popup({ offset: 25 }).setText('Trophy Club Cleaners\\n301 Trophy Lake Dr Unit 128 Roanoke, TX 76262\\nPhone:18174300261');
+        const popup211 = new mapboxgl.Popup({ offset: 25 }).setText('Colony Wash & Dry\\n5205 S Colony Blvd Ste A The Colony, TX 75056\\nPhone:19402051774');
+        const popup212 = new mapboxgl.Popup({ offset: 25 }).setText('Angie\'s Laundry Mat\\n1403 New York Ave Arlington, TX 76010\\nPhone:18178610090');
+        const popup213 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n1957 W Southlake Blvd Ste 100 Southlake, TX 76092\\nPhone:18174882705');
+        const popup214 = new mapboxgl.Popup({ offset: 25 }).setText('Tejas Laundry\\n14336 Josey Ln Farmers Branch, TX 75234\\nPhone:14692482622');
+        const popup215 = new mapboxgl.Popup({ offset: 25 }).setText('Classic Dry Cleaners\\n4451 Fm 2181 Ste 135 Corinth, TX 76210\\nPhone:19403210711');
+        const popup216 = new mapboxgl.Popup({ offset: 25 }).setText('Eastern Sea Laundry\\n3503 Pioneer Rd Mesquite, TX 75180\\nPhone:19722861272');
+        const popup217 = new mapboxgl.Popup({ offset: 25 }).setText('Abrams Wash & Dry\\n9310 Forest Ln Ste 300 Dallas, TX 75243\\nPhone:12143403624');
+        const popup218 = new mapboxgl.Popup({ offset: 25 }).setText('Lp Cleaners\\n1302 S State Hwy 121 Lewisville, TX 75067\\nPhone:19723534824');
+        const popup220 = new mapboxgl.Popup({ offset: 25 }).setText('Tide Cleaners\\n2457 Midway Rd Carrollton, TX 75006\\nPhone:12142383141');
+        const popup221 = new mapboxgl.Popup({ offset: 25 }).setText('EarthTek\\n408 113th St Arlington, TX 76011\\nPhone:18176522780');
+        const popup222 = new mapboxgl.Popup({ offset: 25 }).setText('Adonays Cleaners\\n4411 Lemmon Ave Ste 107 Dallas, TX 75219\\nPhone:12148815581');
+        const popup224 = new mapboxgl.Popup({ offset: 25 }).setText('Sears Appliance Repair\\nDallas, TX 75201\\nPhone:12145505337');
+        const popup225 = new mapboxgl.Popup({ offset: 25 }).setText('Grapevine Cleaners\\n1140 S Main St Grapevine, TX 76051\\nPhone:18174814222');
+        const popup228 = new mapboxgl.Popup({ offset: 25 }).setText('Go Squeaky Clean\\n106 W Broad St Forney, TX 75126\\nPhone:19722849020');
+        const popup229 = new mapboxgl.Popup({ offset: 25 }).setText('AM Linen Rental & Laundry Service\\n2623 Brenner Dr Dallas, TX 75220\\nPhone:14694209170');
+        const popup231 = new mapboxgl.Popup({ offset: 25 }).setText('Stan\'s Comet Cleaners\\n1711 E Frankford Rd Ste A Carrollton, TX 75007\\nPhone:19724927286');
+        const popup232 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n8120 Matlock Rd Arlington, TX 76002\\nPhone:18174536400');
+        const popup233 = new mapboxgl.Popup({ offset: 25 }).setText('Neat Dryclean\\n115 W Sandy Lake Rd Coppell, TX 75019\\nPhone:14696309238');
+        const popup234 = new mapboxgl.Popup({ offset: 25 }).setText('Country Cleaners\\n1102 Ranch Rd Ste 206 Forney, TX 75126\\nPhone:19724491313');
+        const popup235 = new mapboxgl.Popup({ offset: 25 }).setText('Chloe Cleaners\\n2300 W Shady Grove Rd Irving, TX 75060\\nPhone:19727903682');
+        const popup237 = new mapboxgl.Popup({ offset: 25 }).setText('J\'s Tailor & Cleaners\\n2904 Oak Lawn Ave Dallas, TX 75219\\nPhone:12147300207');
+        const popup238 = new mapboxgl.Popup({ offset: 25 }).setText('DD French Cleaners\\n4131 Lomo Alto Dr Dallas, TX 75219\\nPhone:12145215631');
+        const popup239 = new mapboxgl.Popup({ offset: 25 }).setText('Rinse\\nDallas, TX 75227\\nPhone:18888502444');
+        const popup241 = new mapboxgl.Popup({ offset: 25 }).setText('M and A for Clean\\nWestworth Village, TX 76114\\nPhone:18172230414');
+        const popup242 = new mapboxgl.Popup({ offset: 25 }).setText('E & M Home Service\\nDallas, TX 75243\\nPhone:19724890427');
+        const popup243 = new mapboxgl.Popup({ offset: 25 }).setText('Legend Cleaners\\n2832 E Eldorado Pkwy Ste 203 Little Elm, TX 75068\\nPhone:12146185355');
+        const popup244 = new mapboxgl.Popup({ offset: 25 }).setText('Lake Side Cleaners\\n600 E Sandy Lake Rd Ste 102 Coppell, TX 75019\\nPhone:19724627493');
+        const popup245 = new mapboxgl.Popup({ offset: 25 }).setText('Wal-Belt Cleaners\\n4070 N Belt Line Rd Ste 154 Irving, TX 75038\\nPhone:19725707226');
+        const popup247 = new mapboxgl.Popup({ offset: 25 }).setText('Oaks Cleaners\\n1122 N Fielder Rd Arlington, TX 76012\\nPhone:18172748729');
+        const popup250 = new mapboxgl.Popup({ offset: 25 }).setText('Kelly Wash & Dry\\n3434 W Illinois Ave Dallas, TX 75211\\nPhone:12143318880');
+        const popup251 = new mapboxgl.Popup({ offset: 25 }).setText('Ivy Cleaners\\n1927 Faithon P Lucas Sr Blvd Ste 130 Mesquite, TX 75181\\nPhone:14697261255');
+        const popup252 = new mapboxgl.Popup({ offset: 25 }).setText('HP Cleaners\\n4750 N Jupiter Rd Ste 111 Garland, TX 75044\\nPhone:19724149787');
+        const popup253 = new mapboxgl.Popup({ offset: 25 }).setText('Affiliated Appliance\\n1335 N Cowan Ave Ste 5 Lewisville, TX 75057\\nPhone:19402302999');
+        const popup254 = new mapboxgl.Popup({ offset: 25 }).setText('Classic Cleaners & Tailors\\n3811 Ross Ave Dallas, TX 75204\\nPhone:12148219296');
+        const popup255 = new mapboxgl.Popup({ offset: 25 }).setText('Judy\'s Dry Cleaners & Tailor\\n1411 E Sandy Lake Rd Ste 100 Coppell, TX 75019\\nPhone:19723936206');
+        const popup260 = new mapboxgl.Popup({ offset: 25 }).setText('DoorServe Dry Cleaning & Laundry\\n1201 E Main St Ste 110 Allen, TX 75002\\nPhone:14696401969');
+        const popup261 = new mapboxgl.Popup({ offset: 25 }).setText('Sam\'s Cleaners\\n3333 Preston Rd Unit 107 Frisco, TX 75034\\nPhone:19726684037');
+        const popup262 = new mapboxgl.Popup({ offset: 25 }).setText('Riverstone Dry Cleaning Valet\\nCoppell, TX 75019\\nPhone:19722132605');
+        const popup264 = new mapboxgl.Popup({ offset: 25 }).setText('Best Cleaners Mansfield\\n805 N Main St Mansfield, TX 76063\\nPhone:14694381065');
+        const popup266 = new mapboxgl.Popup({ offset: 25 }).setText('Hill Park Cleaners\\n2304 Midway Rd Plano, TX 75093\\nPhone:14693817067');
+        const popup267 = new mapboxgl.Popup({ offset: 25 }).setText('CAWP Cares\\n785 W Wheatland Dr Ste 304 Duncanville, TX 75116\\nPhone:19453367122');
+        const popup268 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n517 E Belt Line Rd Cedar Hill, TX 75104\\nPhone:19722914800');
+        const popup269 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n2216 Long Prairie Rd Flower Mound, TX 75022\\nPhone:19728748600');
+        const popup273 = new mapboxgl.Popup({ offset: 25 }).setText('Dollar Cleaning Services\\nTom Bean, TX 75489\\nPhone:19034368627');
+        const popup275 = new mapboxgl.Popup({ offset: 25 }).setText('Number One Cleaners\\n3198 Parkwood Blvd Ste 3 Frisco, TX 75034\\nPhone:14695794418');
+        const popup276 = new mapboxgl.Popup({ offset: 25 }).setText('Texas One Plumbing\\n519 E I-30 Ste 105 Rockwall, TX 75087\\nPhone:14696681495');
+        const popup277 = new mapboxgl.Popup({ offset: 25 }).setText('Texas Laundry Solutions\\nIndianapolis, IN 46201\\nPhone:12147344152');
+        const popup279 = new mapboxgl.Popup({ offset: 25 }).setText('Abel Appliance Repair\\n2329 Langdon Dr Frisco, TX 75033\\nPhone:19727049999');
+        const popup281 = new mapboxgl.Popup({ offset: 25 }).setText('Duncan Cleaners\\n100 W Southlake Blvd Ste 140 Southlake, TX 76092\\nPhone:18173100511');
+        const popup282 = new mapboxgl.Popup({ offset: 25 }).setText('Mendoza Carpet Cleaning and Maid Service\\n1809 Crockett St Garland, TX 75042\\nPhone:19724949696');
+        const popup283 = new mapboxgl.Popup({ offset: 25 }).setText('Minsky Cleaners & Tailors\\n819 W Arapaho Rd Ste 28 Richardson, TX 75080\\nPhone:19727830307');
+        const popup284 = new mapboxgl.Popup({ offset: 25 }).setText('Regent Cleaners\\n800 W Pipeline Rd Ste 101 Hurst, TX 76053\\nPhone:18172847040');
+        const popup285 = new mapboxgl.Popup({ offset: 25 }).setText('Martinizing Dry Cleaning\\n1257 W Round Grove Rd Lewisville, TX 75067\\nPhone:12144880917');
+        const popup286 = new mapboxgl.Popup({ offset: 25 }).setText('Appliance Rx\\nHaltom City, TX 76117\\nPhone:18178124929');
+        const popup287 = new mapboxgl.Popup({ offset: 25 }).setText('Centre Cleaners\\n1360 W Campbell Rd Ste 126 Richardson, TX 75080\\nPhone:19726717799');
+        const popup288 = new mapboxgl.Popup({ offset: 25 }).setText('That Look Cleaners\\n14200 Trinity Blvd Ste 300 Fort Worth, TX 76155\\nPhone:18176850066');
+        const popup290 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n5501 W Arkansas Ln Arlington, TX 76016\\nPhone:18174960181');
+        const popup291 = new mapboxgl.Popup({ offset: 25 }).setText('Best N Texas Cleaning\\nFort Worth , TX 76112\\nPhone:14698470438');
+        const popup292 = new mapboxgl.Popup({ offset: 25 }).setText('Bond One Hour Cleaners & Laundry\\n138 S Bowen Rd Arlington, TX 76012\\nPhone:18172770121');
+        const popup293 = new mapboxgl.Popup({ offset: 25 }).setText('GK\'s Cleaners and Laundry\\n2608 Flower Mound Rd Ste 136 Flower Mound, TX 75028\\nPhone:19723554991');
+        const popup294 = new mapboxgl.Popup({ offset: 25 }).setText('Amigos Wash & Dry\\n2225 W Ledbetter Dr Ste 210 Dallas, TX 75224\\nPhone:NA');
+        const popup296 = new mapboxgl.Popup({ offset: 25 }).setText('Martinizing Dry Cleaners\\n6449 Coit Rd Ste 100 Frisco, TX 75035\\nPhone:14699993911');
+        const popup298 = new mapboxgl.Popup({ offset: 25 }).setText('Tulip Dry Cleaning\\n1565 W Main St Ste 200 Lewisville, TX 75067\\nPhone:19723606360');
+        const popup299 = new mapboxgl.Popup({ offset: 25 }).setText('St Paul Cleaners\\n7410 Preston Rd Ste 101 Frisco, TX 75034\\nPhone:19723353313');
+        const popup301 = new mapboxgl.Popup({ offset: 25 }).setText('Town & Country Cleaners\\n101 W Glade Rd Ste 110 Euless, TX 76039\\nPhone:18172839154');
+        const popup302 = new mapboxgl.Popup({ offset: 25 }).setText('Freemans Cleaners\\n1200 Horizon Rd Rockwall, TX 75032\\nPhone:12542722062');
+        const popup303 = new mapboxgl.Popup({ offset: 25 }).setText('Dry Clean Super Center\\n3580 Main St Frisco, TX 75033\\nPhone:19723356366');
+        const popup305 = new mapboxgl.Popup({ offset: 25 }).setText('Stonebridge Cleaners\\n3549 Lakota Trl McKinney, TX 75070\\nPhone:19725405099');
+        const popup306 = new mapboxgl.Popup({ offset: 25 }).setText('Wash it Kwik\\n1825 W University Dr, Denton, TX 76201\\nPhone:9403839274');
+
+
+        // Dallas Locations
+        const marker1 = new mapboxgl.Marker()
+            .setLngLat([-96.850390837258, 32.6961864999999])
+            .setPopup(popup1)
+            .addTo(map);
+        const marker2 = new mapboxgl.Marker()
+            .setLngLat([-96.8339510481638, 32.83946665])
+            .setPopup(popup2)
+            .addTo(map);
+        const marker3 = new mapboxgl.Marker()
+            .setLngLat([-96.8186338083326, 32.80849905])
+            .setPopup(popup3)
+            .addTo(map);
+        const marker4 = new mapboxgl.Marker()
+            .setLngLat([-96.7466220128311, 32.8963788])
+            .setPopup(popup4)
+            .addTo(map);
+        const marker5 = new mapboxgl.Marker()
+            .setLngLat([-96.793106609114, 32.8173266])
+            .setPopup(popup5)
+            .addTo(map);
+        const marker6 = new mapboxgl.Marker()
+            .setLngLat([-96.7706263550135, 32.7970138999999])
+            .setPopup(popup6)
+            .addTo(map);
+        const marker7 = new mapboxgl.Marker()
+            .setLngLat([-96.7486741199842, 32.9632556])
+            .setPopup(popup7)
+            .addTo(map);
+        const marker8 = new mapboxgl.Marker()
+            .setLngLat([-96.8363443957144, 32.8309968])
+            .setPopup(popup8)
+            .addTo(map);
+        const marker9 = new mapboxgl.Marker()
+            .setLngLat([-96.7653611, 32.8706228])
+            .setPopup(popup9)
+            .addTo(map);
+        const marker10 = new mapboxgl.Marker()
+            .setLngLat([-97.2152518, 32.8607128])
+            .setPopup(popup10)
+            .addTo(map);
+        const marker11 = new mapboxgl.Marker()
+            .setLngLat([-96.7705684, 32.9403439])
+            .setPopup(popup11)
+            .addTo(map);
+        const marker12 = new mapboxgl.Marker()
+            .setLngLat([-96.8393193, 32.8237366])
+            .setPopup(popup12)
+            .addTo(map);
+        const marker13 = new mapboxgl.Marker()
+            .setLngLat([-96.6287327545737, 32.82744415])
+            .setPopup(popup13)
+            .addTo(map);
+        const marker14 = new mapboxgl.Marker()
+            .setLngLat([-96.8890282189229, 32.6625846])
+            .setPopup(popup14)
+            .addTo(map);
+        const marker15 = new mapboxgl.Marker()
+            .setLngLat([-96.7704714732249, 32.8423108])
+            .setPopup(popup15)
+            .addTo(map);
+        const marker17 = new mapboxgl.Marker()
+            .setLngLat([-96.8706526, 32.8953849])
+            .setPopup(popup17)
+            .addTo(map);
+        const marker19 = new mapboxgl.Marker()
+            .setLngLat([-96.8874025288453, 32.93701065])
+            .setPopup(popup19)
+            .addTo(map);
+        const marker20 = new mapboxgl.Marker()
+            .setLngLat([-96.663895, 33.0147514])
+            .setPopup(popup20)
+            .addTo(map);
+        const marker21 = new mapboxgl.Marker()
+            .setLngLat([-96.7627488131901, 32.79530615])
+            .setPopup(popup21)
+            .addTo(map);
+        const marker22 = new mapboxgl.Marker()
+            .setLngLat([-96.9261676706962, 32.98131345])
+            .setPopup(popup22)
+            .addTo(map);
+        const marker23 = new mapboxgl.Marker()
+            .setLngLat([-97.0803509, 32.7115907])
+            .setPopup(popup23)
+            .addTo(map);
+        const marker24 = new mapboxgl.Marker()
+            .setLngLat([-96.5406913, 33.0121115])
+            .setPopup(popup24)
+            .addTo(map);
+        const marker25 = new mapboxgl.Marker()
+            .setLngLat([-96.7059572, 33.0403535])
+            .setPopup(popup25)
+            .addTo(map);
+        const marker26 = new mapboxgl.Marker()
+            .setLngLat([-96.9953317, 32.98987035])
+            .setPopup(popup26)
+            .addTo(map);
+        const marker27 = new mapboxgl.Marker()
+            .setLngLat([-96.9008562984044, 32.9348205])
+            .setPopup(popup27)
+            .addTo(map);
+        const marker28 = new mapboxgl.Marker()
+            .setLngLat([-96.8779387082064, 32.86545005])
+            .setPopup(popup28)
+            .addTo(map);
+        const marker29 = new mapboxgl.Marker()
+            .setLngLat([-96.7157544371201, 32.9033448499999])
+            .setPopup(popup29)
+            .addTo(map);
+        const marker30 = new mapboxgl.Marker()
+            .setLngLat([-97.0235935, 33.0120605])
+            .setPopup(popup30)
+            .addTo(map);
+        const marker31 = new mapboxgl.Marker()
+            .setLngLat([-96.6428758256517, 33.2323463])
+            .setPopup(popup31)
+            .addTo(map);
+        const marker32 = new mapboxgl.Marker()
+            .setLngLat([-96.8799130528996, 32.85999945])
+            .setPopup(popup32)
+            .addTo(map);
+        const marker34 = new mapboxgl.Marker()
+            .setLngLat([-96.5911060102899, 33.1775619])
+            .setPopup(popup34)
+            .addTo(map);
+        const marker35 = new mapboxgl.Marker()
+            .setLngLat([-96.7688213, 32.799705])
+            .setPopup(popup35)
+            .addTo(map);
+        const marker36 = new mapboxgl.Marker()
+            .setLngLat([-96.6111226, 32.8066704])
+            .setPopup(popup36)
+            .addTo(map);
+        const marker37 = new mapboxgl.Marker()
+            .setLngLat([-96.8935293, 33.0979772])
+            .setPopup(popup37)
+            .addTo(map);
+        const marker38 = new mapboxgl.Marker()
+            .setLngLat([-96.7524141748067, 32.9396059])
+            .setPopup(popup38)
+            .addTo(map);
+        const marker39 = new mapboxgl.Marker()
+            .setLngLat([-96.7346161722905, 32.96237075])
+            .setPopup(popup39)
+            .addTo(map);
+        const marker40 = new mapboxgl.Marker()
+            .setLngLat([-96.8342994218559, 32.74441315])
+            .setPopup(popup40)
+            .addTo(map);
+        const marker43 = new mapboxgl.Marker()
+            .setLngLat([-96.6126286287037, 32.8432564])
+            .setPopup(popup43)
+            .addTo(map);
+        const marker44 = new mapboxgl.Marker()
+            .setLngLat([-97.1328525, 32.8362019])
+            .setPopup(popup44)
+            .addTo(map);
+        const marker45 = new mapboxgl.Marker()
+            .setLngLat([-96.870496, 32.814923])
+            .setPopup(popup45)
+            .addTo(map);
+        const marker48 = new mapboxgl.Marker()
+            .setLngLat([-97.0053405, 32.8596526])
+            .setPopup(popup48)
+            .addTo(map);
+        const marker49 = new mapboxgl.Marker()
+            .setLngLat([-96.7674915762294, 32.7647759])
+            .setPopup(popup49)
+            .addTo(map);
+        const marker50 = new mapboxgl.Marker()
+            .setLngLat([-96.7218475307249, 32.95169045])
+            .setPopup(popup50)
+            .addTo(map);
+        const marker51 = new mapboxgl.Marker()
+            .setLngLat([-96.9353247, 32.8119073])
+            .setPopup(popup51)
+            .addTo(map);
+        const marker52 = new mapboxgl.Marker()
+            .setLngLat([-97.0987352, 32.9426049])
+            .setPopup(popup52)
+            .addTo(map);
+        const marker53 = new mapboxgl.Marker()
+            .setLngLat([-96.7706592, 32.8160525])
+            .setPopup(popup53)
+            .addTo(map);
+        const marker54 = new mapboxgl.Marker()
+            .setLngLat([-96.9330434, 32.5898715])
+            .setPopup(popup54)
+            .addTo(map);
+        const marker55 = new mapboxgl.Marker()
+            .setLngLat([-97.065113, 32.787478])
+            .setPopup(popup55)
+            .addTo(map);
+        const marker56 = new mapboxgl.Marker()
+            .setLngLat([-96.9441159415163, 33.1559775])
+            .setPopup(popup56)
+            .addTo(map);
+        const marker57 = new mapboxgl.Marker()
+            .setLngLat([-96.8758000371658, 32.7055145])
+            .setPopup(popup57)
+            .addTo(map);
+        const marker58 = new mapboxgl.Marker()
+            .setLngLat([-97.1405621265666, 32.84633035])
+            .setPopup(popup58)
+            .addTo(map);
+        const marker59 = new mapboxgl.Marker()
+            .setLngLat([-97.123297, 32.6996979])
+            .setPopup(popup59)
+            .addTo(map);
+        const marker61 = new mapboxgl.Marker({color: 'red'})
+            .setLngLat([-96.7634857183908, 32.79472155])
+            .setPopup(popup61)
+            .addTo(map);
+        const marker62 = new mapboxgl.Marker()
+            .setLngLat([-97.0808119, 32.8513875])
+            .setPopup(popup62)
+            .addTo(map);
+        const marker64 = new mapboxgl.Marker()
+            .setLngLat([-97.0292544, 33.1197146])
+            .setPopup(popup64)
+            .addTo(map);
+        const marker65 = new mapboxgl.Marker()
+            .setLngLat([-97.0977216, 32.76759705])
+            .setPopup(popup65)
+            .addTo(map);
+        const marker66 = new mapboxgl.Marker()
+            .setLngLat([-96.8168866565924, 32.80716115])
+            .setPopup(popup66)
+            .addTo(map);
+        const marker68 = new mapboxgl.Marker()
+            .setLngLat([-96.9054560259689, 32.9555986999999])
+            .setPopup(popup68)
+            .addTo(map);
+        const marker69 = new mapboxgl.Marker()
+            .setLngLat([-96.8130064, 32.8119449])
+            .setPopup(popup69)
+            .addTo(map);
+        const marker70 = new mapboxgl.Marker()
+            .setLngLat([-96.8810624403988, 32.89640375])
+            .setPopup(popup70)
+            .addTo(map);
+        const marker71 = new mapboxgl.Marker()
+            .setLngLat([-97.094374108118, 32.6654149])
+            .setPopup(popup71)
+            .addTo(map);
+        const marker72 = new mapboxgl.Marker()
+            .setLngLat([-96.7231046579495, 32.8949241])
+            .setPopup(popup72)
+            .addTo(map);
+        const marker73 = new mapboxgl.Marker()
+            .setLngLat([-96.9192074565706, 32.66467765])
+            .setPopup(popup73)
+            .addTo(map);
+        const marker74 = new mapboxgl.Marker()
+            .setLngLat([-97.0849748, 32.8356056])
+            .setPopup(popup74)
+            .addTo(map);
+        const marker75 = new mapboxgl.Marker()
+            .setLngLat([-97.0616515854491, 32.7690963999999])
+            .setPopup(popup75)
+            .addTo(map);
+        const marker76 = new mapboxgl.Marker()
+            .setLngLat([-97.0975738498012, 32.8367354])
+            .setPopup(popup76)
+            .addTo(map);
+        const marker77 = new mapboxgl.Marker()
+            .setLngLat([-96.887951, 32.9997171])
+            .setPopup(popup77)
+            .addTo(map);
+        const marker78 = new mapboxgl.Marker()
+            .setLngLat([-96.7871074, 32.8489156])
+            .setPopup(popup78)
+            .addTo(map);
+        const marker79 = new mapboxgl.Marker()
+            .setLngLat([-96.8215903, 32.9338129])
+            .setPopup(popup79)
+            .addTo(map);
+        const marker80 = new mapboxgl.Marker()
+            .setLngLat([-96.6353844, 32.8119952])
+            .setPopup(popup80)
+            .addTo(map);
+        const marker81 = new mapboxgl.Marker()
+            .setLngLat([-97.0970277, 32.7605038])
+            .setPopup(popup81)
+            .addTo(map);
+        const marker83 = new mapboxgl.Marker()
+            .setLngLat([-96.4619499, 32.926558])
+            .setPopup(popup83)
+            .addTo(map);
+        const marker84 = new mapboxgl.Marker()
+            .setLngLat([-96.7697597, 32.8361518])
+            .setPopup(popup84)
+            .addTo(map);
+        const marker86 = new mapboxgl.Marker()
+            .setLngLat([-96.8827438, 32.9213803])
+            .setPopup(popup86)
+            .addTo(map);
+        const marker87 = new mapboxgl.Marker()
+            .setLngLat([-97.0673203511696, 32.7055395999999])
+            .setPopup(popup87)
+            .addTo(map);
+        const marker88 = new mapboxgl.Marker()
+            .setLngLat([-96.8334793, 32.773314])
+            .setPopup(popup88)
+            .addTo(map);
+        const marker90 = new mapboxgl.Marker()
+            .setLngLat([-96.987545, 32.482421])
+            .setPopup(popup90)
+            .addTo(map);
+        const marker91 = new mapboxgl.Marker()
+            .setLngLat([-96.7171044, 32.8781724])
+            .setPopup(popup91)
+            .addTo(map);
+        const marker92 = new mapboxgl.Marker()
+            .setLngLat([-96.7059572, 33.0403535])
+            .setPopup(popup92)
+            .addTo(map);
+        const marker93 = new mapboxgl.Marker()
+            .setLngLat([-96.8243831, 33.1508941])
+            .setPopup(popup93)
+            .addTo(map);
+        const marker94 = new mapboxgl.Marker()
+            .setLngLat([-96.7678187, 32.8709181])
+            .setPopup(popup94)
+            .addTo(map);
+        const marker95 = new mapboxgl.Marker()
+            .setLngLat([-97.0171396716947, 32.7087013])
+            .setPopup(popup95)
+            .addTo(map);
+        const marker96 = new mapboxgl.Marker()
+            .setLngLat([-96.8246893, 32.9535165])
+            .setPopup(popup96)
+            .addTo(map);
+        const marker97 = new mapboxgl.Marker()
+            .setLngLat([-97.0242517135617, 33.04066415])
+            .setPopup(popup97)
+            .addTo(map);
+        const marker98 = new mapboxgl.Marker()
+            .setLngLat([-96.6957719, 32.8388187])
+            .setPopup(popup98)
+            .addTo(map);
+        const marker99 = new mapboxgl.Marker()
+            .setLngLat([-97.0152073418244, 32.73466765])
+            .setPopup(popup99)
+            .addTo(map);
+        const marker100 = new mapboxgl.Marker()
+            .setLngLat([-96.659494002364, 33.10199255])
+            .setPopup(popup100)
+            .addTo(map);
+        const marker101 = new mapboxgl.Marker()
+            .setLngLat([-96.9102836, 32.9476888])
+            .setPopup(popup101)
+            .addTo(map);
+        const marker102 = new mapboxgl.Marker()
+            .setLngLat([-96.8248146598931, 32.91495965])
+            .setPopup(popup102)
+            .addTo(map);
+        const marker103 = new mapboxgl.Marker()
+            .setLngLat([-96.9466415860231, 32.7921527])
+            .setPopup(popup103)
+            .addTo(map);
+        const marker104 = new mapboxgl.Marker()
+            .setLngLat([-96.6990904, 33.0189758])
+            .setPopup(popup104)
+            .addTo(map);
+        const marker106 = new mapboxgl.Marker()
+            .setLngLat([-96.8081913, 32.9608326])
+            .setPopup(popup106)
+            .addTo(map);
+        const marker107 = new mapboxgl.Marker()
+            .setLngLat([-96.6353117053654, 32.91630385])
+            .setPopup(popup107)
+            .addTo(map);
+        const marker108 = new mapboxgl.Marker()
+            .setLngLat([-96.6750830977163, 32.73380755])
+            .setPopup(popup108)
+            .addTo(map);
+        const marker110 = new mapboxgl.Marker()
+            .setLngLat([-96.7006144, 33.0938302])
+            .setPopup(popup110)
+            .addTo(map);
+        const marker111 = new mapboxgl.Marker()
+            .setLngLat([-96.9939892697447, 33.02485575])
+            .setPopup(popup111)
+            .addTo(map);
+        const marker112 = new mapboxgl.Marker()
+            .setLngLat([-96.8028295, 32.7987495])
+            .setPopup(popup112)
+            .addTo(map);
+        const marker114 = new mapboxgl.Marker()
+            .setLngLat([-96.7967184, 32.7756721])
+            .setPopup(popup114)
+            .addTo(map);
+        const marker115 = new mapboxgl.Marker()
+            .setLngLat([-97.1128581669328, 32.75086955])
+            .setPopup(popup115)
+            .addTo(map);
+        const marker117 = new mapboxgl.Marker()
+            .setLngLat([-96.6312455, 32.9318659])
+            .setPopup(popup117)
+            .addTo(map);
+        const marker118 = new mapboxgl.Marker()
+            .setLngLat([-96.9463003, 33.1552167])
+            .setPopup(popup118)
+            .addTo(map);
+        const marker119 = new mapboxgl.Marker()
+            .setLngLat([-97.1937465000554, 32.6800397])
+            .setPopup(popup119)
+            .addTo(map);
+        const marker120 = new mapboxgl.Marker()
+            .setLngLat([-96.4612024880952, 32.76773])
+            .setPopup(popup120)
+            .addTo(map);
+        const marker121 = new mapboxgl.Marker()
+            .setLngLat([-96.7871544, 32.8288577])
+            .setPopup(popup121)
+            .addTo(map);
+        const marker123 = new mapboxgl.Marker()
+            .setLngLat([-96.9076967135008, 32.66141745])
+            .setPopup(popup123)
+            .addTo(map);
+        const marker124 = new mapboxgl.Marker()
+            .setLngLat([-96.4983847, 33.174249])
+            .setPopup(popup124)
+            .addTo(map);
+        const marker126 = new mapboxgl.Marker()
+            .setLngLat([-96.9716501, 32.8424339])
+            .setPopup(popup126)
+            .addTo(map);
+        const marker127 = new mapboxgl.Marker()
+            .setLngLat([-96.9441159415163, 33.1559775])
+            .setPopup(popup127)
+            .addTo(map);
+        const marker129 = new mapboxgl.Marker()
+            .setLngLat([-96.9626928, 32.91009375])
+            .setPopup(popup129)
+            .addTo(map);
+        const marker133 = new mapboxgl.Marker()
+            .setLngLat([-96.9634297702608, 32.8821341])
+            .setPopup(popup133)
+            .addTo(map);
+        const marker134 = new mapboxgl.Marker()
+            .setLngLat([-96.660862525282, 32.9299232])
+            .setPopup(popup134)
+            .addTo(map);
+        const marker135 = new mapboxgl.Marker()
+            .setLngLat([-97.1118919, 32.7211284])
+            .setPopup(popup135)
+            .addTo(map);
+        const marker137 = new mapboxgl.Marker()
+            .setLngLat([-96.9814768, 33.0041645])
+            .setPopup(popup137)
+            .addTo(map);
+        const marker138 = new mapboxgl.Marker()
+            .setLngLat([-96.7791596735725, 32.82844085])
+            .setPopup(popup138)
+            .addTo(map);
+        const marker139 = new mapboxgl.Marker()
+            .setLngLat([-96.7914761777862, 32.7931827])
+            .setPopup(popup139)
+            .addTo(map);
+        const marker140 = new mapboxgl.Marker()
+            .setLngLat([-97.0171396716947, 32.7087013])
+            .setPopup(popup140)
+            .addTo(map);
+        const marker141 = new mapboxgl.Marker()
+            .setLngLat([-96.6823506603022, 32.71457425])
+            .setPopup(popup141)
+            .addTo(map);
+        const marker142 = new mapboxgl.Marker()
+            .setLngLat([-96.7059572, 33.0403535])
+            .setPopup(popup142)
+            .addTo(map);
+        const marker146 = new mapboxgl.Marker()
+            .setLngLat([-96.7864112, 33.3234203])
+            .setPopup(popup146)
+            .addTo(map);
+        const marker147 = new mapboxgl.Marker()
+            .setLngLat([-97.1055869722012, 32.72722655])
+            .setPopup(popup147)
+            .addTo(map);
+        const marker148 = new mapboxgl.Marker()
+            .setLngLat([-96.7452983893902, 32.9515175])
+            .setPopup(popup148)
+            .addTo(map);
+        const marker149 = new mapboxgl.Marker()
+            .setLngLat([-96.6481123, 32.9454876])
+            .setPopup(popup149)
+            .addTo(map);
+        const marker150 = new mapboxgl.Marker()
+            .setLngLat([-96.754285, 33.0411999])
+            .setPopup(popup150)
+            .addTo(map);
+        const marker151 = new mapboxgl.Marker()
+            .setLngLat([-96.9854655, 33.016082])
+            .setPopup(popup151)
+            .addTo(map);
+        const marker153 = new mapboxgl.Marker()
+            .setLngLat([-96.8252845, 32.8294131])
+            .setPopup(popup153)
+            .addTo(map);
+        const marker154 = new mapboxgl.Marker()
+            .setLngLat([-97.0840082, 33.0688929])
+            .setPopup(popup154)
+            .addTo(map);
+        const marker155 = new mapboxgl.Marker()
+            .setLngLat([-97.0034539, 32.7444519])
+            .setPopup(popup155)
+            .addTo(map);
+        const marker156 = new mapboxgl.Marker()
+            .setLngLat([-96.7073737499999, 33.0142582999999])
+            .setPopup(popup156)
+            .addTo(map);
+        const marker157 = new mapboxgl.Marker()
+            .setLngLat([-97.2128894, 32.8349124])
+            .setPopup(popup157)
+            .addTo(map);
+        const marker159 = new mapboxgl.Marker()
+            .setLngLat([-97.094374108118, 32.6654149])
+            .setPopup(popup159)
+            .addTo(map);
+        const marker160 = new mapboxgl.Marker()
+            .setLngLat([-96.850390837258, 32.6961864999999])
+            .setPopup(popup160)
+            .addTo(map);
+        const marker161 = new mapboxgl.Marker()
+            .setLngLat([-96.7697445248678, 32.84502515])
+            .setPopup(popup161)
+            .addTo(map);
+        const marker162 = new mapboxgl.Marker()
+            .setLngLat([-96.7521178, 32.8956685])
+            .setPopup(popup162)
+            .addTo(map);
+        const marker163 = new mapboxgl.Marker()
+            .setLngLat([-97.0278088, 33.040543])
+            .setPopup(popup163)
+            .addTo(map);
+        const marker164 = new mapboxgl.Marker()
+            .setLngLat([-96.8120818901428, 32.53279195])
+            .setPopup(popup164)
+            .addTo(map);
+        const marker166 = new mapboxgl.Marker()
+            .setLngLat([-96.8634928114272, 33.00209935])
+            .setPopup(popup166)
+            .addTo(map);
+        const marker167 = new mapboxgl.Marker()
+            .setLngLat([-97.1349855, 32.7087343])
+            .setPopup(popup167)
+            .addTo(map);
+        const marker168 = new mapboxgl.Marker()
+            .setLngLat([-97.094374108118, 32.6654149])
+            .setPopup(popup168)
+            .addTo(map);
+        const marker169 = new mapboxgl.Marker()
+            .setLngLat([-96.8083758, 32.7760083])
+            .setPopup(popup169)
+            .addTo(map);
+        const marker170 = new mapboxgl.Marker()
+            .setLngLat([-96.6505115, 32.9547183])
+            .setPopup(popup170)
+            .addTo(map);
+        const marker171 = new mapboxgl.Marker()
+            .setLngLat([-96.7999373376963, 32.80654065])
+            .setPopup(popup171)
+            .addTo(map);
+        const marker172 = new mapboxgl.Marker()
+            .setLngLat([-97.0053405, 32.8596526])
+            .setPopup(popup172)
+            .addTo(map);
+        const marker173 = new mapboxgl.Marker()
+            .setLngLat([-97.1349855, 32.7087343])
+            .setPopup(popup173)
+            .addTo(map);
+        const marker174 = new mapboxgl.Marker()
+            .setLngLat([-97.0673203511696, 32.7055395999999])
+            .setPopup(popup174)
+            .addTo(map);
+        const marker175 = new mapboxgl.Marker()
+            .setLngLat([-96.609401384671, 33.0280185])
+            .setPopup(popup175)
+            .addTo(map);
+        const marker177 = new mapboxgl.Marker()
+            .setLngLat([-96.7710996700152, 33.06811435])
+            .setPopup(popup177)
+            .addTo(map);
+        const marker179 = new mapboxgl.Marker()
+            .setLngLat([-96.8081913, 32.9608326])
+            .setPopup(popup179)
+            .addTo(map);
+        const marker182 = new mapboxgl.Marker()
+            .setLngLat([-96.6371703886623, 32.8481938])
+            .setPopup(popup182)
+            .addTo(map);
+        const marker184 = new mapboxgl.Marker()
+            .setLngLat([-96.7059572, 33.0403535])
+            .setPopup(popup184)
+            .addTo(map);
+        const marker186 = new mapboxgl.Marker()
+            .setLngLat([-96.7093122143428, 32.7323797])
+            .setPopup(popup186)
+            .addTo(map);
+        const marker187 = new mapboxgl.Marker()
+            .setLngLat([-97.1108013, 32.5693029])
+            .setPopup(popup187)
+            .addTo(map);
+        const marker188 = new mapboxgl.Marker()
+            .setLngLat([-96.6726553, 33.1698368])
+            .setPopup(popup188)
+            .addTo(map);
+        const marker190 = new mapboxgl.Marker()
+            .setLngLat([-96.8081913, 32.9608326])
+            .setPopup(popup190)
+            .addTo(map);
+        const marker191 = new mapboxgl.Marker()
+            .setLngLat([-96.771898301919, 32.8889676999999])
+            .setPopup(popup191)
+            .addTo(map);
+        const marker192 = new mapboxgl.Marker()
+            .setLngLat([-96.9267912, 32.8617697])
+            .setPopup(popup192)
+            .addTo(map);
+        const marker193 = new mapboxgl.Marker()
+            .setLngLat([-96.8706526, 32.8953849])
+            .setPopup(popup193)
+            .addTo(map);
+        const marker194 = new mapboxgl.Marker()
+            .setLngLat([-96.6994438402453, 33.10233665])
+            .setPopup(popup194)
+            .addTo(map);
+        const marker195 = new mapboxgl.Marker()
+            .setLngLat([-97.1261586, 33.2136119])
+            .setPopup(popup195)
+            .addTo(map);
+        const marker197 = new mapboxgl.Marker()
+            .setLngLat([-96.7793201207499, 32.7966155999999])
+            .setPopup(popup197)
+            .addTo(map);
+        const marker198 = new mapboxgl.Marker()
+            .setLngLat([-96.9539486, 32.9241883])
+            .setPopup(popup198)
+            .addTo(map);
+        const marker199 = new mapboxgl.Marker()
+            .setLngLat([-97.0673203511696, 32.7055395999999])
+            .setPopup(popup199)
+            .addTo(map);
+        const marker200 = new mapboxgl.Marker()
+            .setLngLat([-96.8891516, 32.9743973])
+            .setPopup(popup200)
+            .addTo(map);
+        const marker201 = new mapboxgl.Marker()
+            .setLngLat([-96.690296, 33.030363])
+            .setPopup(popup201)
+            .addTo(map);
+        const marker202 = new mapboxgl.Marker()
+            .setLngLat([-96.7613343, 32.8434059])
+            .setPopup(popup202)
+            .addTo(map);
+        const marker203 = new mapboxgl.Marker()
+            .setLngLat([-96.606603, 32.756182])
+            .setPopup(popup203)
+            .addTo(map);
+        const marker204 = new mapboxgl.Marker()
+            .setLngLat([-96.7876952, 32.8497015])
+            .setPopup(popup204)
+            .addTo(map);
+        const marker205 = new mapboxgl.Marker()
+            .setLngLat([-96.802120658126, 32.9518224])
+            .setPopup(popup205)
+            .addTo(map);
+        const marker208 = new mapboxgl.Marker()
+            .setLngLat([-97.1156969171242, 32.94009615])
+            .setPopup(popup208)
+            .addTo(map);
+        const marker209 = new mapboxgl.Marker()
+            .setLngLat([-97.103998495983, 32.7343010999999])
+            .setPopup(popup209)
+            .addTo(map);
+        const marker210 = new mapboxgl.Marker()
+            .setLngLat([-97.2052981, 32.9991938])
+            .setPopup(popup210)
+            .addTo(map);
+        const marker211 = new mapboxgl.Marker()
+            .setLngLat([-90.2631796, 38.8261761])
+            .setPopup(popup211)
+            .addTo(map);
+        const marker212 = new mapboxgl.Marker()
+            .setLngLat([-77.2886784999999, 37.2847979999999])
+            .setPopup(popup212)
+            .addTo(map);
+        const marker213 = new mapboxgl.Marker()
+            .setLngLat([-97.1520523011934, 32.9431479])
+            .setPopup(popup213)
+            .addTo(map);
+        const marker214 = new mapboxgl.Marker()
+            .setLngLat([-96.8819066, 32.9236343])
+            .setPopup(popup214)
+            .addTo(map);
+        const marker215 = new mapboxgl.Marker()
+            .setLngLat([-97.0426861, 33.1313671])
+            .setPopup(popup215)
+            .addTo(map);
+        const marker216 = new mapboxgl.Marker()
+            .setLngLat([-96.6146103972602, 32.8131298])
+            .setPopup(popup216)
+            .addTo(map);
+        const marker217 = new mapboxgl.Marker()
+            .setLngLat([-96.7368903498836, 32.9078488])
+            .setPopup(popup217)
+            .addTo(map);
+        const marker218 = new mapboxgl.Marker()
+            .setLngLat([-97.0278921, 33.0417732])
+            .setPopup(popup218)
+            .addTo(map);
+        const marker220 = new mapboxgl.Marker()
+            .setLngLat([-96.8366773931933, 32.9699986])
+            .setPopup(popup220)
+            .addTo(map);
+        const marker221 = new mapboxgl.Marker()
+            .setLngLat([-97.094374108118, 32.6654149])
+            .setPopup(popup221)
+            .addTo(map);
+        const marker222 = new mapboxgl.Marker()
+            .setLngLat([-96.8134575028188, 32.8181405])
+            .setPopup(popup222)
+            .addTo(map);
+        const marker224 = new mapboxgl.Marker()
+            .setLngLat([-96.7967184, 32.7756721])
+            .setPopup(popup224)
+            .addTo(map);
+        const marker225 = new mapboxgl.Marker()
+            .setLngLat([-97.0772824, 32.9337161])
+            .setPopup(popup225)
+            .addTo(map);
+        const marker228 = new mapboxgl.Marker()
+            .setLngLat([-96.4763869842576, 32.761865])
+            .setPopup(popup228)
+            .addTo(map);
+        const marker229 = new mapboxgl.Marker()
+            .setLngLat([-96.850390837258, 32.6961864999999])
+            .setPopup(popup229)
+            .addTo(map);
+        const marker231 = new mapboxgl.Marker()
+            .setLngLat([-96.8887024, 32.9520698])
+            .setPopup(popup231)
+            .addTo(map);
+        const marker232 = new mapboxgl.Marker()
+            .setLngLat([-97.1166676, 32.61421585])
+            .setPopup(popup232)
+            .addTo(map);
+        const marker233 = new mapboxgl.Marker()
+            .setLngLat([-96.9948709999999, 32.9688434])
+            .setPopup(popup233)
+            .addTo(map);
+        const marker234 = new mapboxgl.Marker()
+            .setLngLat([-96.4563719, 32.765421])
+            .setPopup(popup234)
+            .addTo(map);
+        const marker235 = new mapboxgl.Marker()
+            .setLngLat([-96.9743222015086, 32.8007565])
+            .setPopup(popup235)
+            .addTo(map);
+        const marker237 = new mapboxgl.Marker()
+            .setLngLat([-96.8098058931769, 32.8074457999999])
+            .setPopup(popup237)
+            .addTo(map);
+        const marker238 = new mapboxgl.Marker()
+            .setLngLat([-96.8155406, 32.8205058])
+            .setPopup(popup238)
+            .addTo(map);
+        const marker239 = new mapboxgl.Marker()
+            .setLngLat([-96.657199, 32.747711])
+            .setPopup(popup239)
+            .addTo(map);
+        const marker241 = new mapboxgl.Marker()
+            .setLngLat([-97.4122925, 32.7620279])
+            .setPopup(popup241)
+            .addTo(map);
+        const marker242 = new mapboxgl.Marker()
+            .setLngLat([-96.7521178, 32.8956685])
+            .setPopup(popup242)
+            .addTo(map);
+        const marker243 = new mapboxgl.Marker()
+            .setLngLat([-96.9441159415163, 33.1559775])
+            .setPopup(popup243)
+            .addTo(map);
+        const marker244 = new mapboxgl.Marker()
+            .setLngLat([-96.9756645008104, 32.96903225])
+            .setPopup(popup244)
+            .addTo(map);
+        const marker245 = new mapboxgl.Marker()
+            .setLngLat([-96.9909829743227, 32.88030595])
+            .setPopup(popup245)
+            .addTo(map);
+        const marker247 = new mapboxgl.Marker()
+            .setLngLat([-97.1321017, 32.7446179])
+            .setPopup(popup247)
+            .addTo(map);
+        const marker250 = new mapboxgl.Marker()
+            .setLngLat([-96.8769891381105, 32.7188941999999])
+            .setPopup(popup250)
+            .addTo(map);
+        const marker251 = new mapboxgl.Marker()
+            .setLngLat([-96.5544172, 32.7439311])
+            .setPopup(popup251)
+            .addTo(map);
+        const marker252 = new mapboxgl.Marker()
+            .setLngLat([-96.6381317729311, 32.9130696])
+            .setPopup(popup252)
+            .addTo(map);
+        const marker253 = new mapboxgl.Marker()
+            .setLngLat([-97.0014362, 33.0462689])
+            .setPopup(popup253)
+            .addTo(map);
+        const marker254 = new mapboxgl.Marker()
+            .setLngLat([-96.787777420275, 32.7998701])
+            .setPopup(popup254)
+            .addTo(map);
+        const marker255 = new mapboxgl.Marker()
+            .setLngLat([-96.9941201, 32.9696705])
+            .setPopup(popup255)
+            .addTo(map);
+        const marker260 = new mapboxgl.Marker()
+            .setLngLat([-97.666852200648, 30.51115525])
+            .setPopup(popup260)
+            .addTo(map);
+        const marker261 = new mapboxgl.Marker()
+            .setLngLat([-96.8080198, 33.1086233])
+            .setPopup(popup261)
+            .addTo(map);
+        const marker262 = new mapboxgl.Marker()
+            .setLngLat([-96.9886518298085, 32.96073015])
+            .setPopup(popup262)
+            .addTo(map);
+        const marker264 = new mapboxgl.Marker()
+            .setLngLat([-97.3899269968085, 32.3571495])
+            .setPopup(popup264)
+            .addTo(map);
+        const marker266 = new mapboxgl.Marker()
+            .setLngLat([-96.8053621931034, 33.0322932])
+            .setPopup(popup266)
+            .addTo(map);
+        const marker267 = new mapboxgl.Marker()
+            .setLngLat([-96.9249976, 32.6486787])
+            .setPopup(popup267)
+            .addTo(map);
+        const marker268 = new mapboxgl.Marker()
+            .setLngLat([-96.9330434, 32.5898715])
+            .setPopup(popup268)
+            .addTo(map);
+        const marker269 = new mapboxgl.Marker()
+            .setLngLat([-97.0701476, 33.0167662])
+            .setPopup(popup269)
+            .addTo(map);
+        const marker273 = new mapboxgl.Marker()
+            .setLngLat([-96.4838749, 33.5201081])
+            .setPopup(popup273)
+            .addTo(map);
+        const marker275 = new mapboxgl.Marker()
+            .setLngLat([-96.8143967665647, 33.1042178])
+            .setPopup(popup275)
+            .addTo(map);
+        const marker276 = new mapboxgl.Marker()
+            .setLngLat([-96.448942, 32.909815])
+            .setPopup(popup276)
+            .addTo(map);
+        const marker277 = new mapboxgl.Marker()
+            .setLngLat([-86.1030339, 39.7815023])
+            .setPopup(popup277)
+            .addTo(map);
+        const marker279 = new mapboxgl.Marker()
+            .setLngLat([-96.8689613, 33.1829792])
+            .setPopup(popup279)
+            .addTo(map);
+        const marker281 = new mapboxgl.Marker()
+            .setLngLat([-97.1520523011934, 32.9431479])
+            .setPopup(popup281)
+            .addTo(map);
+        const marker282 = new mapboxgl.Marker()
+            .setLngLat([-96.6438786, 32.925983])
+            .setPopup(popup282)
+            .addTo(map);
+        const marker283 = new mapboxgl.Marker()
+            .setLngLat([-96.7505296943556, 32.9613509499999])
+            .setPopup(popup283)
+            .addTo(map);
+        const marker284 = new mapboxgl.Marker()
+            .setLngLat([-97.1913519749481, 32.82325275])
+            .setPopup(popup284)
+            .addTo(map);
+        const marker285 = new mapboxgl.Marker()
+            .setLngLat([-97.0266007497932, 33.0099734])
+            .setPopup(popup285)
+            .addTo(map);
+        const marker286 = new mapboxgl.Marker()
+            .setLngLat([-97.273199, 32.7817055])
+            .setPopup(popup286)
+            .addTo(map);
+        const marker287 = new mapboxgl.Marker()
+            .setLngLat([-96.736495, 32.9763363])
+            .setPopup(popup287)
+            .addTo(map);
+        const marker288 = new mapboxgl.Marker()
+            .setLngLat([-97.0576742, 32.8213816])
+            .setPopup(popup288)
+            .addTo(map);
+        const marker290 = new mapboxgl.Marker()
+            .setLngLat([-97.0673203511696, 32.7055395999999])
+            .setPopup(popup290)
+            .addTo(map);
+        const marker291 = new mapboxgl.Marker()
+            .setLngLat([-97.3278313, 32.7453157])
+            .setPopup(popup291)
+            .addTo(map);
+        const marker292 = new mapboxgl.Marker()
+            .setLngLat([-97.1497408443308, 32.7348034])
+            .setPopup(popup292)
+            .addTo(map);
+        const marker293 = new mapboxgl.Marker()
+            .setLngLat([-97.0693970098367, 33.0151235999999])
+            .setPopup(popup293)
+            .addTo(map);
+        const marker294 = new mapboxgl.Marker()
+            .setLngLat([-96.8555530724085, 32.6928255])
+            .setPopup(popup294)
+            .addTo(map);
+        const marker296 = new mapboxgl.Marker()
+            .setLngLat([-96.7687835, 33.13171625])
+            .setPopup(popup296)
+            .addTo(map);
+        const marker298 = new mapboxgl.Marker()
+            .setLngLat([-96.9903243789478, 33.0212135])
+            .setPopup(popup298)
+            .addTo(map);
+        const marker299 = new mapboxgl.Marker()
+            .setLngLat([-96.8028676, 33.1397379])
+            .setPopup(popup299)
+            .addTo(map);
+        const marker301 = new mapboxgl.Marker()
+            .setLngLat([-97.0830297, 32.880654])
+            .setPopup(popup301)
+            .addTo(map);
+        const marker302 = new mapboxgl.Marker()
+            .setLngLat([-96.4659685, 32.8862443])
+            .setPopup(popup302)
+            .addTo(map);
+        const marker303 = new mapboxgl.Marker()
+            .setLngLat([-96.8575683566876, 33.18730965])
+            .setPopup(popup303)
+            .addTo(map);
+        const marker305 = new mapboxgl.Marker()
+            .setLngLat([-96.7307019, 33.1687917])
+            .setPopup(popup305)
+            .addTo(map);
+        const marker306 = new mapboxgl.Marker({color: 'red'})
+            .setLngLat([-97.137853, 33.230888])
+            .setPopup(popup306)
+            .addTo(map);
+        // Fort Worth Pop Up
+        const fw_popup1 = new mapboxgl.Popup({ offset: 25 }).setText('Turbo Laundry\\n6209 Granbury Rd Fort Worth, TX 76133\\nPhone:(817) 541-7441');
+        const fw_popup2 = new mapboxgl.Popup({ offset: 25 }).setText('Super Coin Laundry\\n2920 Cleburne Rd Fort Worth, TX 76110\\nPhone:(817) 922-9565');
+        const fw_popup3 = new mapboxgl.Popup({ offset: 25 }).setText('Tarrant Laundry\\n5866 S Hulen St Fort Worth, TX 76132\\nPhone:(817) 615-9742');
+        const fw_popup4 = new mapboxgl.Popup({ offset: 25 }).setText('Lone Star Wash n Fold\\n6721 Mid Cities Blvd North Richland Hills, TX 76182\\nPhone:(817) 479-3221');
+        const fw_popup5 = new mapboxgl.Popup({ offset: 25 }).setText('Vickery Blvd Laundry\\n4128 W Vickery Blvd Fort Worth, TX 76107\\nPhone:(817) 439-9274');
+        const fw_popup6 = new mapboxgl.Popup({ offset: 25 }).setText('Seashore Washateria\\n1651 New York Ave Arlington, TX 76010\\nPhone:(682) 323-5916');
+        const fw_popup7 = new mapboxgl.Popup({ offset: 25 }).setText('Saginaw Laundry Center\\n416 Belmont St Saginaw, TX 76179\\nPhone:(682) 738-5151');
+        const fw_popup9 = new mapboxgl.Popup({ offset: 25 }).setText('Super Wash & Dry\\n1560 W Berry St Fort Worth, TX 76110\\nPhone:(817) 924-2433');
+        const fw_popup10 = new mapboxgl.Popup({ offset: 25 }).setText('Northside Coin Laundry\\n103 E Long Ave Fort Worth, TX 76106\\nPhone:(214) 288-5400');
+        const fw_popup11 = new mapboxgl.Popup({ offset: 25 }).setText('Denton Hwy Laundromat\\n6400 Denton Hwy Watauga Watauga, TX 76148\\nPhone:(817) 781-2843');
+        const fw_popup13 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry Works\\n9116 Camp Bowie W Fort Worth, TX 76116\\nPhone:(817) 213-6761');
+        const fw_popup15 = new mapboxgl.Popup({ offset: 25 }).setText('Sycamore Super Laundry\\n3951 Sycamore School Rd Ste 129 Fort Worth, TX 76133\\nPhone:(817) 346-7772');
+        const fw_popup16 = new mapboxgl.Popup({ offset: 25 }).setText('Clean Jeans Laundromat\\n130 Industrial Ave Azle, TX 76020\\nPhone:(817) 984-0597');
+        const fw_popup18 = new mapboxgl.Popup({ offset: 25 }).setText('360 Wash-n-Dry\\n2800 Forestwood Dr Arlington, TX 76006\\nPhone:(817) 617-2273');
+        const fw_popup19 = new mapboxgl.Popup({ offset: 25 }).setText('Sylvania Wash World\\n720 N Sylvania Ave Fort Worth, TX 76111\\nPhone:(817) 831-1313');
+
+
+        // Fort Worth Locations
+        const fw_marker1 = new mapboxgl.Marker()
+            .setLngLat([-97.3994531556134, 32.65854125])
+            .setPopup(fw_popup1)
+            .addTo(map);
+        const fw_marker2 = new mapboxgl.Marker()
+            .setLngLat([-97.3452391151404, 32.70904475])
+            .setPopup(fw_popup2)
+            .addTo(map);
+        const fw_marker3 = new mapboxgl.Marker()
+            .setLngLat([-97.3984521333333, 32.6636256333333])
+            .setPopup(fw_popup3)
+            .addTo(map);
+        const fw_marker4 = new mapboxgl.Marker()
+            .setLngLat([-97.2260414, 32.8603859])
+            .setPopup(fw_popup4)
+            .addTo(map);
+        const fw_marker5 = new mapboxgl.Marker()
+            .setLngLat([-97.3676742043954, 32.6888012])
+            .setPopup(fw_popup5)
+            .addTo(map);
+        const fw_marker6 = new mapboxgl.Marker()
+            .setLngLat([-97.080376, 32.709342])
+            .setPopup(fw_popup6)
+            .addTo(map);
+        const fw_marker7 = new mapboxgl.Marker()
+            .setLngLat([-97.3633397, 32.8577652])
+            .setPopup(fw_popup7)
+            .addTo(map);
+        const fw_marker9 = new mapboxgl.Marker()
+            .setLngLat([-97.3278313, 32.7453157])
+            .setPopup(fw_popup9)
+            .addTo(map);
+        const fw_marker10 = new mapboxgl.Marker()
+            .setLngLat([-97.33613, 32.805816])
+            .setPopup(fw_popup10)
+            .addTo(map);
+        const fw_marker11 = new mapboxgl.Marker()
+            .setLngLat([-97.25969985, 32.88492575])
+            .setPopup(fw_popup11)
+            .addTo(map);
+        const fw_marker13 = new mapboxgl.Marker()
+            .setLngLat([-97.4414652, 32.7175462])
+            .setPopup(fw_popup13)
+            .addTo(map);
+        const fw_marker15 = new mapboxgl.Marker()
+            .setLngLat([-97.379391483069, 32.6341831999999])
+            .setPopup(fw_popup15)
+            .addTo(map);
+        const fw_marker16 = new mapboxgl.Marker()
+            .setLngLat([-97.544897, 32.897877])
+            .setPopup(fw_popup16)
+            .addTo(map);
+        const fw_marker18 = new mapboxgl.Marker()
+            .setLngLat([-97.065113, 32.787478])
+            .setPopup(fw_popup18)
+            .addTo(map);
+        const fw_marker19 = new mapboxgl.Marker({color: 'red'})
+            .setLngLat([-97.3088632, 32.7701184])
+            .setPopup(fw_popup19)
+            .addTo(map);
+
+        // Listing for Sale Pop-Up - Not interested anymore...
+        const listing_popup1 = new mapboxgl.Popup({ offset: 25 }).setText('Laundry City\\n1903 Crestridge Dr Mesquite, TX\\nAsking Price: $95,000');
+        const listing_popup2 = new mapboxgl.Popup({ offset: 25 }).setText('Amigo Wash & Dry\\n3518 Sunnyvale St Dallas TX\\nAsking Price: $1,275,000');
+        const listing_popup3 = new mapboxgl.Popup({ offset: 25 }).setText('Qwik Wash & Dry\\n1820 Hillcrest St. Mesquite, TX\\nAsking Price: $479,000');
+        const listing_popup4 = new mapboxgl.Popup({ offset: 25 }).setText('The Laundry Lounge\\n9585 Scyene Rd Suit E & F Dallas, TX\\nAsking Price: $245,000');
+        const listing_popup5 = new mapboxgl.Popup({ offset: 25 }).setText('1st Wash & Dry\\n8796 Ferguson Rd #137 Dallas, TX\\nAsking Price: $120,000');
+        const listing_popup6 = new mapboxgl.Popup({ offset: 25 }).setText('Wash Me Lavanderia\\n2345 W Rochelle Rd Irving, TX\\nAsking Price: $1,200,000');
+
+
+        // Listings for Sale Locations
+        const listing_marker1 = new mapboxgl.Marker()
+            .setLngLat([-96.607833, 32.787933])
+            .setPopup(listing_popup1)
+            .addTo(map);
+
+        const listing_marker2 = new mapboxgl.Marker()
+            .setLngLat([-96.783899, 32.712488])
+            .setPopup(listing_popup2)
+            .addTo(map);
+
+        const listing_marker3 = new mapboxgl.Marker()
+            .setLngLat([-96.60626, 32.78611])
+            .setPopup(listing_popup3)
+            .addTo(map);
+
+        const listing_marker4 = new mapboxgl.Marker()
+            .setLngLat([-96.657554, 32.763628])
+            .setPopup(listing_popup4)
+            .addTo(map);
+
+        const listing_marker5 = new mapboxgl.Marker()
+            .setLngLat([-96.699274, 32.812556])
+            .setPopup(listing_popup5)
+            .addTo(map);
+
+        const listing_marker6 = new mapboxgl.Marker()
+            .setLngLat([-96.975843, 32.841954])
+            .setPopup(listing_popup6)
+            .addTo(map);
+
+        map.on('load', () => {
+            //Set the default atmosphere style
+            map.setFog({});
+
+            // add a source layer for Dallas Zip Codes
+            map.addSource('dallas-zip-codes', {
+                type: 'geojson',
+                data: 'Desktop\Laundry\Data\Laundromat_Locations\Dallas-Zip-Codes.geojson'
+            });
+
+            map.addLayer({
+                'id': 'income',
+                'type': 'fill',
+                'source': 'dallas-zip-codes', // replace with your source
+                'paint': {
+                    'fill-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'Median Income'], // replace with the property name of median income in your data
+                        1, '#FFCCCB', // red for income 0-30,000
+                        30000, '#FFCCCB',
+                        30001, '#ffff00', // yellow for income 31,000-60,000
+                        60000, '#ffff00',
+                        60001, '#90EE90', // light green for income 61,000-90,000
+                        90000, '#90EE90',
+                        90001, '#32CD32', // lime green for income 91,000-120,000
+                        120000, '#32CD32',
+                        120001, '#00FF00', // green for income 121,000-150,000
+                        150000, '#00FF00',
+                        150001, '#008000', // darker green for income 151,000-180,000
+                        180000, '#008000',
+                        180001, '#006400', // dark green for income 181,000-200,000+
+                        200000, '#006400'
+                    ],
+                    'fill-opacity': 0.75
+                }
+            });
+
+            map.addLayer({
+                id: 'dallas-zip-codes-line',
+                type: 'line',
+                source: 'dallas-zip-codes',
+                paint: {
+                    'line-color': 'black',
+                    'line-width': 1
+                }
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
