@@ -1233,7 +1233,7 @@
             .setLngLat([-97.137853, 33.230888])
             .setPopup(popup306)
             .addTo(map);
-        // Fort Worth Pop Up
+        // General Pop Up
         const fw_popup1 = new mapboxgl.Popup({ offset: 25 }).setText('Turbo Laundry\\n6209 Granbury Rd Fort Worth, TX 76133\\nPhone:(817) 541-7441');
         const fw_popup2 = new mapboxgl.Popup({ offset: 25 }).setText('Super Coin Laundry\\n2920 Cleburne Rd Fort Worth, TX 76110\\nPhone:(817) 922-9565');
         const fw_popup3 = new mapboxgl.Popup({ offset: 25 }).setText('Tarrant Laundry\\n5866 S Hulen St Fort Worth, TX 76132\\nPhone:(817) 615-9742');
@@ -1249,9 +1249,21 @@
         const fw_popup16 = new mapboxgl.Popup({ offset: 25 }).setText('Clean Jeans Laundromat\\n130 Industrial Ave Azle, TX 76020\\nPhone:(817) 984-0597');
         const fw_popup18 = new mapboxgl.Popup({ offset: 25 }).setText('360 Wash-n-Dry\\n2800 Forestwood Dr Arlington, TX 76006\\nPhone:(817) 617-2273');
         const fw_popup19 = new mapboxgl.Popup({ offset: 25 }).setText('Sylvania Wash World\\n720 N Sylvania Ave Fort Worth, TX 76111\\nPhone:(817) 831-1313');
+        const fw_popup20 = new mapboxgl.Popup({ offset: 25 }).setText('Ocean Wash and Dry \\n1117 Dallas Dr, Denton, TX 76205\\nPhone:(972) 242-9000');
+        const fw_popup21 = new mapboxgl.Popup({ offset: 25 }).setText('Roys Wash and Dry #4 \\n133 E University Dr. Denton, TX 76209\\nPhone:');
+        const fw_popup22 = new mapboxgl.Popup({ offset: 25 }).setText('Roys Wash and Dry \\n1121 E McKinney St, Denton, TX 76209\\nPhone:');
+        const fw_popup23 = new mapboxgl.Popup({ offset: 25 }).setText('Roys Laundry \\n923 S Carroll Blvd, Denton, TX 76201\\nPhone:');
+        const fw_popup24 = new mapboxgl.Popup({ offset: 25 }).setText('Roys 24/7 Wash-n-Dry \\n1507 Eagle Dr, Denton, TX 76201\\nPhone:');
+        const fw_popup25 = new mapboxgl.Popup({ offset: 25 }).setText('Handy Wash & Dry \\n125 Bellaire Blvd # 800, Lewisville, TX 75067\\nPhone:');
+        const fw_popup26 = new mapboxgl.Popup({ offset: 25 }).setText('Vogue Cleaners \\n203 N Bell Ave, Denton, TX 76201\\nPhone:');
+        const fw_popup27 = new mapboxgl.Popup({ offset: 25 }).setText('The Washhouse \\n631 Londonderry Ln, Denton, TX 76205\\nPhone:');
+        const fw_popup28 = new mapboxgl.Popup({ offset: 25 }).setText('Jesss Laundry Wash and Fold \\n314 S Shady Shores Dr Suite 104, Lake Dallas, TX 75065\\nPhone:');
+        const fw_popup29 = new mapboxgl.Popup({ offset: 25 }).setText('Sams Wash \\n3001 N Elm St, Denton, TX 76207\\nPhone:');
+        const fw_popup30 = new mapboxgl.Popup({ offset: 25 }).setText('Lee Cleaners \\n1618 W University Dr, Denton, TX 76201\\nPhone:');
+        const fw_popup31 = new mapboxgl.Popup({ offset: 25 }).setText('Econo Cleaners \\n2221 W University Dr, Denton, TX 76201\\nPhone:');
 
 
-        // Fort Worth Locations
+        // General Locations
         const fw_marker1 = new mapboxgl.Marker()
             .setLngLat([-97.3994531556134, 32.65854125])
             .setPopup(fw_popup1)
@@ -1311,6 +1323,54 @@
         const fw_marker19 = new mapboxgl.Marker({color: 'red'})
             .setLngLat([-97.3088632, 32.7701184])
             .setPopup(fw_popup19)
+            .addTo(map);
+        const fw_marker20 = new mapboxgl.Marker({color: 'black'})
+            .setLngLat([-97.121839, 33.198111])
+            .setPopup(fw_popup20)
+            .addTo(map);
+        const fw_marker21 = new mapboxgl.Marker()
+            .setLngLat([-97.131962, 33.230854])
+            .setPopup(fw_popup21)
+            .addTo(map);
+        const fw_marker22 = new mapboxgl.Marker()
+            .setLngLat([-97.1168, 33.2172])
+            .setPopup(fw_popup22)
+            .addTo(map);
+        const fw_marker23 = new mapboxgl.Marker()
+            .setLngLat([-97.1331, 33.2147])
+            .setPopup(fw_popup23)
+            .addTo(map);
+        const fw_marker24 = new mapboxgl.Marker()
+            .setLngLat([-97.1330, 33.2146])
+            .setPopup(fw_popup24)
+            .addTo(map);
+        const fw_marker25 = new mapboxgl.Marker({color: 'purple'})
+            .setLngLat([-96.994328, 33.028127])
+            .setPopup(fw_popup25)
+            .addTo(map);
+        const fw_marker26 = new mapboxgl.Marker()
+            .setLngLat([-97.1328, 33.2164])
+            .setPopup(fw_popup26)
+            .addTo(map);
+        const fw_marker27 = new mapboxgl.Marker()
+            .setLngLat([-97.133064, 33.214840])
+            .setPopup(fw_popup27)
+            .addTo(map);
+        const fw_marker28 = new mapboxgl.Marker()
+            .setLngLat([-97.029358, 33.1198064])
+            .setPopup(fw_popup28)
+            .addTo(map);
+        const fw_marker29 = new mapboxgl.Marker()
+            .setLngLat([-97.133064, 33.214840])
+            .setPopup(fw_popup29)
+            .addTo(map);
+        const fw_marker30 = new mapboxgl.Marker({color: 'purple'})
+            .setLngLat([-97.14859, 33.22971])
+            .setPopup(fw_popup30)
+            .addTo(map);
+        const fw_marker31 = new mapboxgl.Marker({color: 'purple'})
+            .setLngLat([-97.133064, 33.214840])
+            .setPopup(fw_popup31)
             .addTo(map);
 
         // Listing for Sale Pop-Up - Not interested anymore...
